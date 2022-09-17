@@ -1,0 +1,6 @@
+begin
+origin The Fuddler, 2019-04
+pieces white kf1 qe4 sf4 rh4 pf5 bc7 black sc1 sa2 pb5 kc5 ph5 pf7
+option noboard variation
+stipulation #2
+end

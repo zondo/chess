@@ -1,0 +1,6 @@
+begin
+origin The Fuddler, 2018-09
+pieces white ka2 qc2 bd3 pb5 sd6 rf6 sb7 re8 black pe6 sa7 kd7 rg7
+option noboard variation
+stipulation #2
+end

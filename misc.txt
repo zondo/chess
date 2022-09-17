@@ -1,0 +1,9 @@
+begin
+origin Thomas Taverner
+pieces white sc1 rf1 bg1 pe2 kg2 rh2 pf3 qh5 sc7 bh7 black pc4 kf4 pc5 bd8 re8 rf8 bg8
+option variation
+stipulation #2
+end
+
+taverner: 3brrb1/2N4B/8/2p4Q/2p2k2/5P2/4P1KR/2N2RB1
+dontmate: B5KR/1r5B/6R1/2b1p1p1/2P1k1P1/1p2P2p/1P2P2P/3N1N2
