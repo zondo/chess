@@ -1,49 +1,54 @@
-"""Solve chess puzzles.
+"""Solve mate-in-2 chess puzzles.
 """
 
 import chess
 
 
 def solve_puzzle(fen):
+    for move, replies in mate_in_2(fen):
+        print(f"1. {move}")
+        for reply, mating_move in sorted(replies.items()):
+            print(f"1. ... {reply:6} 2. {mating_move}")
+
+
+def mate_in_2(fen):
     board = chess.Board(fen)
 
-    for move in board.legal_moves:
-        m1 = board.san(move)
-        plays = []
-        board.push(move)
-        escape = False
+    # Look at all first moves for white.
+    for move in legal_moves(board):
+        # Black's replies and mating moves.
+        replies = {}
 
-        for move in board.legal_moves:
-            m2 = board.san(move)
-            board.push(move)
-            allmate = False
+        # Whether black has a move that avoids mate.
+        avoidmate = False
 
-            for move in board.legal_moves:
-                m3 = board.san(move)
-                board.push(move)
-                mate = board.is_checkmate()
-                board.pop()
+        # Check black's replies.
+        for reply in legal_moves(board):
+            # Is there a mating move?
+            canmate = False
 
-                if mate:
-                    plays.append([m2, m3])
-                    allmate = True
+            # Find a mating move.
+            for mating_move in legal_moves(board):
+                if board.is_checkmate():
+                    replies[reply] = mating_move
+                    canmate = True
                     break
 
-            board.pop()
-            if not allmate:
-                escape = True
+            # If no mating move, black can escape.
+            if not canmate:
+                avoidmate = True
                 break
 
-        if not escape:
-            print(m1)
-            for m2, m3 in sorted(plays):
-                print('   ', m2, m3)
-
-        board.pop()
+        # If black can't escape mate, it's a solution.
+        if not avoidmate:
+            yield move, replies
 
 
-def do_move(board):
+def legal_moves(board):
     for move in board.legal_moves:
-        board.push(move)
-        yield board.copy()
-        board.pop()
+        try:
+            san = board.san(move)
+            board.push(move)
+            yield san
+        finally:
+            board.pop()
