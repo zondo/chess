@@ -49,4 +49,4 @@ def dump_puzzle(month, fen, dirname="fuddler"):
 
 def dump(dirname="fuddler"):
     for month, fen in sorted(puzzles.items()):
-        dump_puzzle(month, dirname)
+        dump_puzzle(month, fen, dirname)
