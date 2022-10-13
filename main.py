@@ -1,7 +1,7 @@
 from fuddler import puzzles, dump_puzzle
 from solve import solve_puzzle
 
-month = "2022-08"
+month = "2022-10"
 fen = puzzles[month]
 dump_puzzle(month, fen)
 print()
