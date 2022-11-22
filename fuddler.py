@@ -1,6 +1,7 @@
 """Chess puzzles from The Fuddler, in FEN format.
 """
 
+from pathlib import Path
 from fenwrite import write_popeye, write_svg
 
 
@@ -40,11 +41,14 @@ puzzles = {
 
 
 def dump_puzzle(month, fen, dirname="fuddler"):
-    prefix = f"{dirname}/{month}"
-    write_svg(fen, prefix + ".svg")
+    dirname = Path(dirname)
+    dirname.mkdir(exist_ok=True)
+
+    prefix = dirname / month
+    write_svg(fen, prefix.with_suffix(".svg"))
 
     title = "The Fuddler, " + month
-    write_popeye(fen, prefix + ".txt", title)
+    write_popeye(fen, prefix.with_suffix(".txt"), title)
 
     print(f"Wrote {month}")
 
