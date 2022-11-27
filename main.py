@@ -6,7 +6,7 @@ fuddler = puzzles["fuddler"]
 
 # dump("puzzles")
 
-month = "2022-10"
+month = "2022-11"
 fen = fuddler[month]
 dump_puzzle(month, fen, dirname="puzzles")
 
