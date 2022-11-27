@@ -3,7 +3,7 @@
 
 import yaml
 from pathlib import Path
-from fenwrite import write_svg
+from fenwrite import write_svg, write_popeye
 
 
 def get_puzzles(path="puzzles.yaml"):
@@ -17,7 +17,7 @@ def dump_puzzle(name, fen, dirname=None):
 
     prefix = dirname / name
     write_svg(fen, prefix.with_suffix(".svg"))
-    print(f"Wrote {name}")
+    write_popeye(fen, prefix.with_suffix(".txt"), name)
 
 
 def dump(dirname=None):
