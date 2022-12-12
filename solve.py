@@ -16,25 +16,23 @@ def mate_in_2(fen):
 
     # Look at all first moves for white.
     for move in legal_moves(board):
-        # Black's replies and mating moves.
+        # Keep track of Black's replies, and White's and mating moves.
         replies = {}
 
-        # Whether black has a move that avoids mate.
+        # Does Black have a move that avoids mate?
         avoidmate = False
 
-        # Check black's replies.
+        # Check Black's replies.
         for reply in legal_moves(board):
-            # Is there a mating move?
+            # Is there a mating move from this position?
             canmate = False
-
-            # Find a mating move.
             for mating_move in legal_moves(board):
                 if board.is_checkmate():
                     replies[reply] = mating_move
                     canmate = True
                     break
 
-            # If no mating move, black can escape.
+            # If not, Black can escape.
             if not canmate:
                 avoidmate = True
                 break
